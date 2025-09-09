@@ -1,0 +1,13 @@
+name: pehla workflow yaml
+on:
+  push:
+    branches:
+      - main
+      - feature
+
+jobs:
+ terraform_init_plan_job:
+    name: terraform init plan job
+    runs-on: pehlirunner
+    steps:
+    - run: echo Hello world!
