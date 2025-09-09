@@ -10,4 +10,6 @@ jobs:
     name: terraform init plan job
     runs-on: pehlirunner
     steps:
-    - run: echo Hello world!
+      - run: echo Hello world!
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
