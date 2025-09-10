@@ -80,4 +80,8 @@ jobs:
         run: terraform apply -auto-approve
         continue-on-error: true
         working-directory: ./Environment/Dev
+      - name: Terraform Init
+        id: destroy
+        run: terraform destroy -auto-approve
+        working-directory: ./Environment/Dev 
                 
