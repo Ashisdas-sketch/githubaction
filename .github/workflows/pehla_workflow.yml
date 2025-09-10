@@ -3,6 +3,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write
+  contents: read
 
 jobs:
  terraform_init_plan_job:
