@@ -47,4 +47,30 @@ jobs:
         run: terraform plan -no-color -input=false
         continue-on-error: true
         working-directory: ./Environment/Dev
+        
+ terraform_apply_job:
+      name: terraform apply
+      runs-on: pehlirunner
+      environment: dev
+      steps:
+
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+      - name: Install Terraform
+        uses: little-core-labs/install-terraform@v2.0.0
+        with:
+          version: 1.13.0
+          
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          client-id: 562b19af-1df0-4a38-bdbf-b54466b8c2ed
+          tenant-id: 2e038d55-8828-4c61-9bd1-862031ee51bb
+          subscription-id: 07181b5e-cb73-4072-8605-0c0f9f4ae28f
+      - name: Terraform apply
+        if: github.ref == 'refs/heads/main'
+        id: apply
+        run: terraform apply -auto-approve
+        continue-on-error: true
+        working-directory: ./Environment/Dev
                 
