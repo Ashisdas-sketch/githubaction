@@ -5,6 +5,14 @@ terraform {
       version = "4.41.0"
     }
   }
+    backend "azurerm" {
+    resource_group_name   = "RG111"
+    storage_account_name  = "infrastorage143"
+    container_name        = "infracontainer"
+    key                   = "ashisfile.tfstate"
+    
+  }
+
 }
 
 provider "azurerm" {
